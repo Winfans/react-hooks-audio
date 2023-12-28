@@ -1,8 +1,16 @@
 {
-  "name": "characterx-website-app",
-  "version": "1.0.0",
+  "name": "react-hooks-audio",
+  "description": "Custom audio playback for React Hooks",
+  "version": "0.0.1",
   "type": "module",
-  "license": "ISC",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "typings": "index.d.js",
+  "files": [
+    "build",
+    "README.md"
+  ],
   "scripts": {
     "build:hooks": "rollup -c ./rollup.config.ts --configPlugin typescript",
     "dev": "vite",
@@ -21,6 +29,28 @@
       "git add ."
     ]
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Winfans/react-hooks-audio.git"
+  },
+  "keywords": [
+    "audio",
+    "react audio",
+    "react hooks audio",
+    "react",
+    "react hooks"
+  ],
+  "author": "Winfans",
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
+  },
+  "bugs": {
+    "url": "https://github.com/Winfans/react-hooks-audio/issues"
+  },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.12",
@@ -28,29 +58,16 @@
     "antd": "^5.11.4",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
-    "html2canvas": "^1.4.1",
-    "immer": "^10.0.3",
-    "localforage": "^1.10.0",
     "lodash-es": "^4.17.21",
     "react": "^18.2.0",
-    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "react-spinners": "^0.13.8",
     "react-timer-hook": "^3.0.7",
-    "store2": "^2.14.2",
     "tailwindcss": "^3.3.5",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.23.6",
-    "@babel/preset-env": "^7.23.6",
-    "@babel/preset-react": "^7.23.3",
-    "@babel/preset-typescript": "^7.23.3",
     "@commitlint/config-conventional": "^17.7.0",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/lodash-es": "^4.17.7",
     "@types/node": "^20.10.5",
@@ -59,7 +76,6 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
-    "autoprefixer": "^10.4.14",
     "commitlint": "^17.7.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.38.0",
@@ -74,9 +90,6 @@
     "prettier": "^2.8.8",
     "rollup": "^4.9.1",
     "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-multi-input": "^1.4.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",

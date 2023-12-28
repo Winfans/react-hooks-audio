@@ -33,6 +33,11 @@ jobs:
       - run: pnpm i
       - run: pnpm build
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+
   # Single deploy job since we're just deploying
   deploy:
     needs: build
@@ -49,6 +54,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
+          name: 'dist'
           path: 'dist'
       - name: Deploy to GitHub Pages
         id: deployment

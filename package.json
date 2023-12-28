@@ -9,7 +9,7 @@
   "typings": "index.d.js",
   "files": [
     "build",
-    "README.md"
+    "README*"
   ],
   "scripts": {
     "build:hooks": "rollup -c ./rollup.config.ts --configPlugin typescript",

@@ -94,7 +94,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
             </svg>
           )}
           {theme === VoicePlayeThemeEnum.PLAIN && (
-            <img className="w-[20px] h-[20px]" src="/icons/pause-grey.svg" alt="" />
+            <img className="w-[20px] h-[20px]" src="/img/pause-grey.svg" alt="" />
           )}
         </>
       );
@@ -106,7 +106,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={pauseVoice}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/images/characters/puase.png"
+              src="/img/puase.png"
               alt=""
             />
           )}
@@ -115,7 +115,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={pauseVoice}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/icons/pause-grey.svg"
+              src="/img/pause-grey.svg"
               alt=""
             />
           )}
@@ -129,7 +129,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/images/characters/play.png"
+              src="/img/play.png"
               alt=""
             />
           )}
@@ -138,7 +138,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/icons/play-grey.svg"
+              src="/img/play-grey.svg"
               alt=""
             />
           )}
@@ -158,7 +158,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               onChange={setCurrentTime}
               min={0}
               max={audioTime}
-              step={1}
+              step={0.01}
               tooltip={{ open: false }}
             />
           </div>

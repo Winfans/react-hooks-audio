@@ -4,6 +4,10 @@ import { useBoolean, useMemoizedFn } from 'ahooks';
 import { Slider } from 'antd';
 import { v4 } from 'uuid';
 import { FC, memo, useMemo } from 'react';
+import PuaseGreyIcon from '../../assets/img/pause-grey.svg';
+import PlayGreyIcon from '../../assets/img/play-grey.svg';
+import PlayIcon from '../../assets/img/play.png';
+import PuaseIcon from '../../assets/img/puase.png';
 import './index.less';
 
 enum VoicePlayeThemeEnum {
@@ -94,7 +98,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
             </svg>
           )}
           {theme === VoicePlayeThemeEnum.PLAIN && (
-            <img className="w-[20px] h-[20px]" src="/img/pause-grey.svg" alt="" />
+            <img className="w-[20px] h-[20px]" src={PuaseGreyIcon} alt="" />
           )}
         </>
       );
@@ -106,7 +110,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={pauseVoice}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/img/puase.png"
+              src={PuaseIcon}
               alt=""
             />
           )}
@@ -115,7 +119,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={pauseVoice}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/img/pause-grey.svg"
+              src={PuaseGreyIcon}
               alt=""
             />
           )}
@@ -129,7 +133,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/img/play.png"
+              src={PlayIcon}
               alt=""
             />
           )}
@@ -138,7 +142,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/img/play-grey.svg"
+              src={PlayGreyIcon}
               alt=""
             />
           )}

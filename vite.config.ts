@@ -8,7 +8,6 @@ enum EnvEnum {
 }
 
 const isDev = process.env.ENV === EnvEnum.DEV;
-console.log(process.env.ENV);
 
 export default defineConfig({
   base: isDev ? '' : 'react-hooks-audio',

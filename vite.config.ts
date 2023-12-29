@@ -8,9 +8,9 @@ enum EnvEnum {
 }
 
 const isDev = process.env.ENV === EnvEnum.DEV;
-
+const baseUrl = isDev ? '' : 'react-hooks-audio';
 export default defineConfig({
-  base: isDev ? '' : 'react-hooks-audio',
+  base: baseUrl,
   plugins: [react()],
   css: {
     preprocessorOptions: {
@@ -21,6 +21,7 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.ENV': JSON.stringify(process.env.ENV),
+    BASE_URL: JSON.stringify(baseUrl),
   },
   resolve: {
     alias: {

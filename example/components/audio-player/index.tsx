@@ -1,4 +1,4 @@
-import { useVoice } from '@/hooks';
+import { useAudio } from '@/hooks';
 import { blockTimeFormat, convertBlob2AudioUrl } from '../../utils';
 import { useBoolean, useMemoizedFn } from 'ahooks';
 import { Slider } from 'antd';
@@ -31,7 +31,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
     onBeforePlay,
     isReplay,
   } = props;
-  const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useVoice({
+  const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useAudio({
     value,
   });
   const [loading, loadingActions] = useBoolean();
@@ -56,7 +56,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
 
     isReplay ? rePlay() : play();
   });
-  const pauseVoice = useMemoizedFn((e) => {
+  const pauseAudio = useMemoizedFn((e) => {
     e.stopPropagation();
     if (disabled) return;
     pause();
@@ -108,7 +108,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
           {theme === VoicePlayeThemeEnum.PRIMARY && (
             <img
               data-id={_id}
-              onClick={pauseVoice}
+              onClick={pauseAudio}
               className="cursor-pointer w-[22px] h-[22px]"
               src={PuaseIcon}
               alt=""
@@ -117,7 +117,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
           {theme === VoicePlayeThemeEnum.PLAIN && (
             <img
               data-id={_id}
-              onClick={pauseVoice}
+              onClick={pauseAudio}
               className="cursor-pointer w-[20px] h-[20px]"
               src={PuaseGreyIcon}
               alt=""
@@ -149,7 +149,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
         </>
       );
     }
-  }, [loading, playing, theme, _id, pauseVoice, playVoice]);
+  }, [loading, playing, theme, _id, pauseAudio, playVoice]);
   return (
     <div className="voice-player flex gap-2 items-center">
       {contentJsx}

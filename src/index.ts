@@ -1,4 +1,4 @@
-import { useVoice } from './hooks';
+import { useAudio } from './hooks';
 
-export default useVoice;
-export { useVoice };
+export default useAudio;
+export { useAudio };

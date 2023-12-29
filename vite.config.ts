@@ -2,7 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+enum EnvEnum {
+  PROD = 'prod', // 生产环境
+  DEV = 'dev', // 开发环境
+}
+
+const isDev = process.env.ENV === EnvEnum.DEV;
+console.log(process.env.ENV);
+
 export default defineConfig({
+  base: isDev ? '' : 'react-hooks-audio',
   plugins: [react()],
   css: {
     preprocessorOptions: {

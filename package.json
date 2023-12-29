@@ -13,8 +13,8 @@
   ],
   "scripts": {
     "build:hooks": "rollup -c ./rollup.config.ts --configPlugin typescript",
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "cross-env ENV=dev  vite",
+    "build": "cross-env ENV=prod vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 10",
     "prepare": "husky install"

@@ -1,9 +1,30 @@
-react-hooks-audio，适合在 React 16.x 技术栈项目中使用。
+# react-hooks-audio
+
+适合在 React 16.x 技术栈项目中使用。
 
 # 🎉 特性
 
 - 自定义音频播放
 - 基于 React Hooks 实现
+
+# 🎉 在线 demo
+
+https://winfans.github.io/react-hooks-audio/
+
+# 安装
+
+```
+npm install --save react-hooks-audio
+```
+
+# 用法
+
+<a href="https://github.com/Winfans/react-hooks-audio/blob/main/example/components/audio-player/index.tsx">demo</a>
+
+```
+import { useAudio } from 'react-hooks-audio';
+const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useAudio({ value: 'xxx' });
+```
 
 # 浏览器兼容性
 

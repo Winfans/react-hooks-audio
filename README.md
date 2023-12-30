@@ -1,9 +1,30 @@
-react-hooks-audio, suitable for use in React 16.x technology stack projects.
+# react-hooks-audio
 
-# 🎉 Features
+suitable for use in React 16.x technology stack projects.
+
+# 🚀 Features
 
 - Custom audio playback
 - Implemented based on React Hooks
+
+# 🎉 Live demo
+
+https://winfans.github.io/react-hooks-audio/
+
+# Installation
+
+```
+npm install --save react-hooks-audio
+```
+
+# Usage
+
+<a href="https://github.com/Winfans/react-hooks-audio/blob/main/example/components/audio-player/index.tsx">demo</a>
+
+```
+import { useAudio } from 'react-hooks-audio';
+const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useAudio({ value: 'xxx' });
+```
 
 # Browser compatibility
 

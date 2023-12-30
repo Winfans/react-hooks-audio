@@ -8,7 +8,7 @@ import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json' assert { type: 'json' };
 
 const input = './src/index.ts';
-const outDir = 'build';
+const outDir = 'dist';
 
 const externalDeps = Object.keys(pkg.dependencies || {});
 

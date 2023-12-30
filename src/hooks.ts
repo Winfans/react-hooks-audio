@@ -2,7 +2,7 @@ import { useBoolean, useMemoizedFn } from 'ahooks';
 import { useEffect, useRef, useState } from 'react';
 
 let voicePlay;
-const useVoice = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) => {
+const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) => {
   const [playing, playingAction] = useBoolean(false);
   const audio = useRef<HTMLAudioElement>(null);
   const [audioTime, setAudioTime] = useState(0);
@@ -144,4 +144,4 @@ const useVoice = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) 
   };
 };
 
-export { useVoice };
+export { useAudio };

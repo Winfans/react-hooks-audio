@@ -1,9 +1,13 @@
-import { useVoice } from '@/hooks';
+import { useAudio } from '@/hooks';
 import { blockTimeFormat, convertBlob2AudioUrl } from '../../utils';
 import { useBoolean, useMemoizedFn } from 'ahooks';
 import { Slider } from 'antd';
 import { v4 } from 'uuid';
 import { FC, memo, useMemo } from 'react';
+import PuaseGreyIcon from '../../assets/img/pause-grey.svg';
+import PlayGreyIcon from '../../assets/img/play-grey.svg';
+import PlayIcon from '../../assets/img/play.png';
+import PuaseIcon from '../../assets/img/puase.png';
 import './index.less';
 
 enum VoicePlayeThemeEnum {
@@ -27,7 +31,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
     onBeforePlay,
     isReplay,
   } = props;
-  const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useVoice({
+  const { playing, play, pause, currentTime, audioTime, setCurrentTime, init, rePlay } = useAudio({
     value,
   });
   const [loading, loadingActions] = useBoolean();
@@ -52,7 +56,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
 
     isReplay ? rePlay() : play();
   });
-  const pauseVoice = useMemoizedFn((e) => {
+  const pauseAudio = useMemoizedFn((e) => {
     e.stopPropagation();
     if (disabled) return;
     pause();
@@ -94,7 +98,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
             </svg>
           )}
           {theme === VoicePlayeThemeEnum.PLAIN && (
-            <img className="w-[20px] h-[20px]" src="/img/pause-grey.svg" alt="" />
+            <img className="w-[20px] h-[20px]" src={PuaseGreyIcon} alt="" />
           )}
         </>
       );
@@ -104,18 +108,18 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
           {theme === VoicePlayeThemeEnum.PRIMARY && (
             <img
               data-id={_id}
-              onClick={pauseVoice}
+              onClick={pauseAudio}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/img/puase.png"
+              src={PuaseIcon}
               alt=""
             />
           )}
           {theme === VoicePlayeThemeEnum.PLAIN && (
             <img
               data-id={_id}
-              onClick={pauseVoice}
+              onClick={pauseAudio}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/img/pause-grey.svg"
+              src={PuaseGreyIcon}
               alt=""
             />
           )}
@@ -129,7 +133,7 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[22px] h-[22px]"
-              src="/img/play.png"
+              src={PlayIcon}
               alt=""
             />
           )}
@@ -138,14 +142,14 @@ const AudioPlayer: FC<AudioPlayerProps> = memo((props) => {
               data-id={_id}
               onClick={playVoice}
               className="cursor-pointer w-[20px] h-[20px]"
-              src="/img/play-grey.svg"
+              src={PlayGreyIcon}
               alt=""
             />
           )}
         </>
       );
     }
-  }, [loading, playing, theme, _id, pauseVoice, playVoice]);
+  }, [loading, playing, theme, _id, pauseAudio, playVoice]);
   return (
     <div className="voice-player flex gap-2 items-center">
       {contentJsx}

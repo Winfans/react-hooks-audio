@@ -1,9 +1,8 @@
-import { useBoolean, useMemoizedFn } from 'ahooks';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 let voicePlay;
 const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) => {
-  const [playing, playingAction] = useBoolean(false);
+  const [playing, setPlaying] = useState(false);
   const audio = useRef<HTMLAudioElement>(null);
   const [audioTime, setAudioTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -19,20 +18,20 @@ const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) 
     }
   };
 
-  const pause = useMemoizedFn(() => {
+  const pause = useCallback(() => {
     audio.current?.pause();
-    playingAction.setFalse();
+    setPlaying(false);
     voicePlay = null;
-  });
+  }, []);
 
-  const play = useMemoizedFn(() => {
+  const play = useCallback(() => {
     if (!voicePlay) {
       voicePlay = {
         playing: true,
         pause: pause,
       };
     } else {
-      playingAction.setFalse();
+      setPlaying(false);
       voicePlay?.pause();
       voicePlay = null;
       voicePlay = {
@@ -41,17 +40,17 @@ const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) 
       };
     }
     audio.current?.play();
-    playingAction.setTrue();
-  });
+    setPlaying(true);
+  }, [pause]);
 
-  const rePlay = useMemoizedFn(() => {
+  const rePlay = useCallback(() => {
     if (!voicePlay) {
       voicePlay = {
         playing: true,
         pause: pause,
       };
     } else {
-      playingAction.setFalse();
+      setPlaying(false);
       voicePlay?.pause();
       voicePlay = null;
       voicePlay = {
@@ -64,34 +63,34 @@ const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) 
       audio.current.currentTime = 0;
       audio.current.play();
     }
-    playingAction.setTrue();
-  });
+    setPlaying(true);
+  }, [pause]);
 
-  const endedHandle = useMemoizedFn(() => {
-    playingAction.setFalse();
+  const endedHandle = useCallback(() => {
+    setPlaying(false);
     voicePlay = null;
-  });
+  }, []);
 
-  const loadeddataHandle = useMemoizedFn(() => {
+  const loadeddataHandle = useCallback(() => {
     if (audio.current?.duration !== Infinity) {
       setAudioTime(audio.current.duration);
     }
-  });
-  const loadedmetadataHandle = useMemoizedFn(() => {
+  }, []);
+  const loadedmetadataHandle = useCallback(() => {
     if (audio.current?.duration !== Infinity) {
       setAudioTime(audio.current?.duration);
     }
-  });
+  }, []);
 
-  const timeupdateHandle = useMemoizedFn(() => {
+  const timeupdateHandle = useCallback(() => {
     setCurrentTime(audio.current?.currentTime);
-  });
+  }, []);
 
-  const changeCurrentTime = useMemoizedFn((value) => {
+  const changeCurrentTime = useCallback((value) => {
     if (audio.current) {
       audio.current.currentTime = value;
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (value) {
@@ -104,14 +103,14 @@ const useAudio = ({ value, isWebm }: { value?: string; isWebm?: boolean } = {}) 
     }
   }, [isWebm, value]);
 
-  const addEventHandle = useMemoizedFn(() => {
+  const addEventHandle = useCallback(() => {
     if (audio.current) {
       audio.current.addEventListener('ended', endedHandle);
       audio.current.addEventListener('loadeddata', loadeddataHandle);
       audio.current.addEventListener('loadedmetadata', loadedmetadataHandle);
       audio.current.addEventListener('timeupdate', timeupdateHandle);
     }
-  });
+  }, [endedHandle, loadeddataHandle, loadedmetadataHandle, timeupdateHandle]);
 
   useEffect(() => {
     addEventHandle();
